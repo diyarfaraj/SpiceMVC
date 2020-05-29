@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <aside class="col-12 bg"></aside>
     <header>
+
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Spice Island</a>
@@ -20,15 +22,15 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item dropdown text-white-50">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Content Management</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Content Management</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
-                                <a href="#" class="dropdown-item">Cat</a>
+                                <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">Category</a>
                                 <a href="#" class="dropdown-item">Sub Cat</a>
                                 <a href="#" class="dropdown-item">Menu Item</a>
                                 <a href="#" class="dropdown-item">Couping</a>
                                 <a href="#" class="dropdown-item">Users</a>
                             </div>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -40,6 +42,7 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -54,6 +57,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/6a69abd5d5.js" crossorigin="anonymous"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
