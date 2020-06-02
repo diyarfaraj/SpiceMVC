@@ -66,5 +66,71 @@ namespace Spice.Areas.Admin.Controllers
 
         }
 
+        //POST -edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Update(category);
+                await _db.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(category);
+           
+        }
+
+
+        //GET - delete
+        
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var catergory = await _db.Category.FindAsync(id);
+
+            if (catergory == null)
+            {
+                return NotFound();
+            }
+
+            return View(catergory);
+
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            
+           
+            var category = await _db.Category.FindAsync(id);
+
+            if(category == null)
+            {
+               return NotFound();
+            }
+
+            _db.Category.Remove(category);
+            await _db.SaveChangesAsync();
+
+
+            return RedirectToAction(nameof(Index));
+            //Anthoer way to do it: 
+            //if (ModelState.IsValid)
+            //{
+            //    _db.Remove(category);
+            //    await _db.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+
+            //return View(category);
+        }
+
+
     }
 }
