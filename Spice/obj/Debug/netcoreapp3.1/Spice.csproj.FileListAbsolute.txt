@@ -472,3 +472,5 @@ C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditAndBackToListButton.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Delete.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteAndBackToListButton.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DetailsEditAndBackToListButton.cshtml.g.cs
