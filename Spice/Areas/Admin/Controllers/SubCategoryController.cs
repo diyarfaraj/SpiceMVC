@@ -92,5 +92,136 @@ namespace Spice.Areas.Admin.Controllers
             return Json(new SelectList(subCategories, "Id", "Name"));
         }
 
+        //GET edit 
+        
+        public async Task<IActionResult> Edit(int? id)
+        {
+
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var subCategory = await _db.SubCategory.SingleOrDefaultAsync(m => m.Id == id);
+
+            if(subCategory == null)
+            {
+                return NotFound();
+            }
+            SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
+            {
+                CategoryList = await _db.Category.ToListAsync(),
+                SubCategory = subCategory,
+                SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name)
+                                  .Select(p => p.Name).Distinct().ToListAsync()
+            };
+
+            return View(model);
+
+        }
+
+        // POST - edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, SubCategoryAndCategoryViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var doesSubCategoryExist = _db.SubCategory.Include(s => s.Category)
+                    .Where(s => s.Name == model.SubCategory.Name && s.Category.Id == model.SubCategory.CategoryId);
+
+                if (doesSubCategoryExist.Count() > 0)
+                {
+                    //Error message here
+                    StatusMessage = "Error: Subcategory already exists under " + doesSubCategoryExist.First().Category.Name + " Category. Use another one.  ";
+                }
+                else
+                {
+                    var subCategoryfromDb = await _db.SubCategory.FindAsync(id);
+                    subCategoryfromDb.Name = model.SubCategory.Name;
+                    await _db.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+
+                }
+            }
+
+            SubCategoryAndCategoryViewModel modelVM = new SubCategoryAndCategoryViewModel()
+            {
+                CategoryList = await _db.Category.ToListAsync(),
+                SubCategory = model.SubCategory,
+                SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name).Select(p => p.Name).ToListAsync(),
+                StatusMessage = StatusMessage
+            };
+            modelVM.SubCategory.Id = id;
+            return View(modelVM);
+
+        }
+
+        // GET details
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var subCategory = await _db.SubCategory.SingleOrDefaultAsync(m => m.Id == id);
+
+            if (subCategory == null)
+            {
+                return NotFound();
+            }
+            SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
+            {
+                CategoryList = await _db.Category.ToListAsync(),
+                SubCategory = subCategory,
+                SubCategoryList = await _db.SubCategory.OrderBy(p => p.Name)
+                                  .Select(p => p.Name).Distinct().ToListAsync()
+            };
+
+            return View(model);
+        }
+
+        //GET delete
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var subCategory = await _db.SubCategory.Include(s => s.Category).SingleOrDefaultAsync(m => m.Id == id);
+
+            if (subCategory == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(subCategory);
+        }
+
+        //POST delete
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteSubCat(int id)
+        {
+            var subCategory = await _db.SubCategory.SingleOrDefaultAsync(m => m.Id == id);
+
+            if(subCategory == null)
+            {
+                return NotFound();
+            }
+
+            _db.SubCategory.Remove(subCategory);
+            await _db.SaveChangesAsync();
+
+           
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

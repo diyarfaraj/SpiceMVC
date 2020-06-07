@@ -1,0 +1,101 @@
+﻿@model Spice.Models.ViewModels.SubCategoryAndCategoryViewModel
+@using Spice.Extensions
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2 class="text-info">SubCategory Details</h2>
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="border backgroundWhite row">
+    <div class="col-8 border-right">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="SubCategory.CategoryId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="SubCategory.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <select id="ddlCategoryList" disabled asp-for="SubCategory.CategoryId" asp-items="Model.CategoryList.ToSelectListItem(Model.SubCategory.CategoryId)" class="form-control"></select>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="SubCategory.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input disabled asp-for="SubCategory.Name" class="form-control" />
+                    <span asp-validation-for="SubCategory.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="_DetailsEditAndBackToListButton" model="Model.SubCategory.Id" />
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-3 offset-1">
+        @if (Model.SubCategoryList.Count > 0)
+        {
+            <p>Existing SubCategories: </p>
+            <div id="SubCategoryList">
+                <ul class="list-group">
+                </ul>
+            </div>
+        }
+        else
+        {
+            <p>This Category does not have a subcategory yet!</p>
+        }
+    </div>
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        let categorySelected = document.getElementById("ddlCategoryList");
+
+    function updateSubCategoryList() {
+        let list = document.getElementById("SubCategoryList");
+        let listGroup = document.querySelector(".list-group");
+
+        fetch('/Admin/SubCategory/GetSubCategory/'+categorySelected.value)
+            .then(function (response) {
+	            // The API call was successful!
+	            return response.json();
+            }).then(function (data) {
+                // This is the JSON from our response
+                listGroup.textContent = '';
+                for (i in data) {
+
+                    let SubCatList = document.createElement('li');
+                    SubCatList.textContent = data[i].text;
+                    SubCatList.classList.add('list-group-item')
+
+                    listGroup.appendChild(SubCatList);
+                }
+
+            }).catch(function (err) {
+	            // There was an error
+	            console.warn('Sömething went wrong.', err);
+            });
+
+    }
+
+    window.addEventListener('load', updateSubCategoryList);
+    //categorySelected.addEventListener('change', updateSubCategoryList); /*not necessary*/
+
+    </script>
+}
+
+

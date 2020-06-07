@@ -120,15 +120,7 @@ namespace Spice.Areas.Admin.Controllers
 
 
             return RedirectToAction(nameof(Index));
-            //Anthoer way to do it: 
-            //if (ModelState.IsValid)
-            //{
-            //    _db.Remove(category);
-            //    await _db.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
 
-            //return View(category);
         }
 
         //GET details
