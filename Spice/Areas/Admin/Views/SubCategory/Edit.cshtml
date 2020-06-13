@@ -65,37 +65,40 @@
     <script>
         let categorySelected = document.getElementById("ddlCategoryList");
 
-    function updateSubCategoryList() {
-        let list = document.getElementById("SubCategoryList");
-        let listGroup = document.querySelector(".list-group");
+        function updateSubCategoryList() {
+            let list = document.getElementById("SubCategoryList");
+            let listGroup = document.querySelector(".list-group");
 
-        fetch('/Admin/SubCategory/GetSubCategory/'+categorySelected.value)
-            .then(function (response) {
-	            // The API call was successful!
-	            return response.json();
-            }).then(function (data) {
-                // This is the JSON from our response
-                listGroup.textContent = '';
-                for (i in data) {
+            fetch('/Admin/SubCategory/GetSubCategory/' + categorySelected.value)
+                .then(function (response) {
+                    // The API call was successful!
+                    return response.json();
+                }).then(function (data) {
+                    // This is the JSON from our response
+                    listGroup.textContent = '';
+                    for (i in data) {
 
-                    let SubCatList = document.createElement('li');
-                    SubCatList.textContent = data[i].text;
-                    SubCatList.classList.add('list-group-item')
+                        let SubCatList = document.createElement('li');
+                        SubCatList.textContent = data[i].text;
+                        SubCatList.classList.add('list-group-item')
 
-                    listGroup.appendChild(SubCatList);
-                }
+                        listGroup.appendChild(SubCatList);
+                    }
 
-            }).catch(function (err) {
-	            // There was an error
-	            console.warn('Sömething went wrong.', err);
-            });
+                }).catch(function (err) {
+                    // There was an error
+                    console.warn('Sömething went wrong.', err);
+                });
 
-    }
-    
-    window.addEventListener('load', updateSubCategoryList);
-    //categorySelected.addEventListener('change', updateSubCategoryList); /*not necessary*/
+        }
+
+        window.addEventListener('load', updateSubCategoryList);
+        //categorySelected.addEventListener('change', updateSubCategoryList); /*not necessary*/
 
     </script>
+
+ 
+    
 }
 
 
