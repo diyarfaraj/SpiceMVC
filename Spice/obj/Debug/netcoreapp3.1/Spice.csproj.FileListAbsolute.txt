@@ -482,3 +482,4 @@ C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Delete.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Index.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Create.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Edit.cshtml.g.cs

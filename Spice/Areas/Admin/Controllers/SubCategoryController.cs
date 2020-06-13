@@ -65,6 +65,9 @@ namespace Spice.Areas.Admin.Controllers
                     return RedirectToAction(nameof(Index));
 
                 }
+            } else
+            {
+                return View(model);
             }
 
             SubCategoryAndCategoryViewModel modelVM = new SubCategoryAndCategoryViewModel()
