@@ -18,8 +18,7 @@
                     <label asp-for="MenuItem.Name" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="MenuItem.Name" class="form-control" />
-                    <span asp-validation-for="MenuItem.Name" class="text-danger"></span>
+                    <input readonly asp-for="MenuItem.Name" class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -30,7 +29,6 @@
                     @Html.TextAreaFor(m => m.MenuItem.Description)
                 </div>
                 <div>
-                    <span asp-validation-for="MenuItem.Description" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -38,24 +36,23 @@
                     <label asp-for="MenuItem.Price" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="MenuItem.Price" class="form-control" />
-                    <span asp-validation-for="MenuItem.Price" class="text-danger"></span>
+                    <input readonly asp-for="MenuItem.Price" class="form-control" />
                 </div>
             </div>
-            <div class="form-group row">
+           @* <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="MenuItem.Image" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <input type="file" name="files" multiple class="form-control" />
+                    <input readonly type="file" name="files" multiple class="form-control" />
                 </div>
-            </div>
+            </div>*@
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="MenuItem.CategoryId" class="col-form-label"></label>
+                    <label  asp-for="MenuItem.CategoryId" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <select asp-for="@Model.MenuItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.MenuItem.CategoryId)" class="form-control"></select>
+                    <input readonly  asp-for="@Model.MenuItem.Category.Name" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.MenuItem.CategoryId)" class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -63,7 +60,7 @@
                     <label asp-for="MenuItem.SubCategoryId" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <select asp-for="@Model.MenuItem.SubCategoryId" id="SubCategoryId" name="SubCategoryId" asp-items="@(new SelectList(string.Empty, "Id", "Name"))" class="form-control"></select>
+                    <input readonly asp-for="@Model.MenuItem.SubCategory.Name" id="SubCategoryId" name="SubCategoryId" asp-items="@(new SelectList(string.Empty, "Id", "Name"))" class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
@@ -71,7 +68,7 @@
                     <label asp-for="MenuItem.Spicyness" class="col-form-label"></label>
                 </div>
                 <div class="col-8">
-                    <select asp-for="MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-control"></select>
+                    <select disabled asp-for="MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-control"></select>
                 </div>
             </div>
         </div>
@@ -81,7 +78,7 @@
 
         <div class="col-8">
             <div class="col-8 offset-4">
-                <partial name="_EditAndBackToListButton" model="@Model.MenuItem.Id" />
+                <partial name="_DetailsEditAndBackToListButton" model="@Model.MenuItem.Id" />
             </div>
         </div>
     </div>
@@ -95,7 +92,8 @@
       toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
       toolbar_mode: 'floating',
       tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
+         tinycomments_author: 'Author name',
+      readonly:1
     });
     </script>
 
