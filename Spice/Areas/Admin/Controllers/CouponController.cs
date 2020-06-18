@@ -85,53 +85,47 @@ namespace Spice.Areas.Admin.Controllers
         }
 
         // POST edit
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPOST(Coupon coupons)
+        public async Task<IActionResult> Edit(Coupon coupons)
         {
             if(coupons.Id == 0)
             {
                 return NotFound(); 
             }
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(coupons);
-            }
+                var coupongFromDB = await _db.Coupon.Where(m => m.Id == coupons.Id).FirstOrDefaultAsync();
 
-            var coupongFromDB = await _db.Coupon.Where(m => m.Id == coupons.Id).FirstOrDefaultAsync();
-
-            var files = HttpContext.Request.Form.Files;
-            if(files.Count > 0)
-            {
-                byte[] p1 = null;
-                using (var fs1 = files[0].OpenReadStream())
+                var files = HttpContext.Request.Form.Files;
+                if (files.Count > 0)
                 {
-                    using (var ms1 = new System.IO.MemoryStream())
+                    byte[] p1 = null;
+                    using (var fs1 = files[0].OpenReadStream())
                     {
-                        fs1.CopyTo(ms1);
-                        p1 = ms1.ToArray();
+                        using (var ms1 = new System.IO.MemoryStream())
+                        {
+                            fs1.CopyTo(ms1);
+                            p1 = ms1.ToArray();
+                        }
                     }
+
+                    coupongFromDB.Picture = p1;
                 }
 
-                coupongFromDB.Picture = p1;
+                coupongFromDB.Name = coupons.Name;
+                coupongFromDB.MinimumAmount = coupons.MinimumAmount;
+                coupongFromDB.Discount = coupons.Discount;
+                coupongFromDB.IsActive = coupons.IsActive;
+                coupongFromDB.CouponType = coupons.CouponType;
+
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
             }
 
-            coupongFromDB.Name = coupons.Name;
-            coupongFromDB.MinimumAmount = coupons.MinimumAmount;
-            coupongFromDB.Discount = coupons.Discount;
-            coupongFromDB.IsActive = coupons.IsActive;
-            coupongFromDB.CouponType = coupons.CouponType;
-
-            await _db.SaveChangesAsync();
-
-            if (!ModelState.IsValid)
-            {
-                return View(coupons);
-            }
-
-            return RedirectToAction(nameof(Index));
-
+            return View(coupons);
         }
     }
 }
