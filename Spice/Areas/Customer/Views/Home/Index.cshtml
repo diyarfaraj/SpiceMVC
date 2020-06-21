@@ -2,7 +2,7 @@
 
 <br />
 
-@if(Model.Coupon.ToList().Count > 0)
+@if (Model.Coupon.ToList().Count > 0)
 {
     <div class="border">
         <div class="carousel" data-ride="carousel" data-interval="2000">
@@ -35,4 +35,73 @@
             }
         </div>
     </div>
+}
+
+<br />
+<br />
+
+
+<div class="backgroundWhite container">
+
+    <ul id="menu-filters" class="menu-filter-list list-inline text-center">
+        <li class="filter active btn btn-secondary ml-1 mr-1" data-filter="menu-restaurant">Show All</li>
+
+        @foreach (var item in Model.Category)
+        {
+            <li class="filter ml-1 mr-1" data-filter="@item.Name.Replace(" ", string.Empty)">@item.Name</li>
+
+        }
+    </ul>
+
+
+    @foreach (var category in Model.Category)
+    {
+        <div class="row" id="menu-wrapper">
+            <partial name="_ThumbNailAreaPartial" model="@Model.MenuItem.Where(u => u.Category.Name.Equals(category.Name))"></partial>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        let post = document.querySelector(".post");
+        let menuFilterBtn = document.querySelectorAll("#menu-filters li");
+        let restaurantMenu = document.querySelectorAll(".menu-restaurant");
+
+        for (let i = 0; i < menuFilterBtn.length; i++) {
+             menuFilterBtn[i].addEventListener('click', function () {
+                console.log("el was clicked")
+
+                 menuFilterBtn.forEach(function (el) {
+                     el.classList.remove('active')
+                    el.classList.remove('btn')
+                el.classList.remove('btn-secondary')
+                 })
+             
+
+            menuFilterBtn[i].classList.add('active');
+            menuFilterBtn[i].classList.add('btn');
+            menuFilterBtn[i].classList.add('btn-secondary');
+
+                 restaurantMenu.forEach(function (el) {
+                     el.style.display = "none";
+                 })
+
+                 if (menuFilterBtn[i].textContent === "Show All") {
+                     restaurantMenu.forEach(function (el) {
+                         el.style.display = "block";
+                     })
+                 } else {
+                 restaurantMenu[i - 1].style.display = "block";
+
+                 }
+                let selectedFilter = menuFilterBtn[i].getAttribute('data-fiter');
+            
+        })
+        
+        }
+           
+
+
+    </script>
 }
