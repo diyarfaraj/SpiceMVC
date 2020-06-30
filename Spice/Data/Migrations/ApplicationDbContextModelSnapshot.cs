@@ -320,8 +320,8 @@ namespace Spice.Data.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<string>("MenuItemId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MenuItemId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

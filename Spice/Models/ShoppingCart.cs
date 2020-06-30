@@ -18,7 +18,7 @@ namespace Spice.Models
         [NotMapped]
         [ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
-        public string MenuItemId { get; set; }
+        public int MenuItemId { get; set; }
 
         [NotMapped]
         [ForeignKey("MenuItemId")]
