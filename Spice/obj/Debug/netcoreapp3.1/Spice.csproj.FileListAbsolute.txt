@@ -416,8 +416,6 @@ C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\ru\Microso
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Index.cshtml.g.cs
@@ -494,3 +492,7 @@ C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Details.cshtml.g.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Summary.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\Stripe.net.dll
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cache

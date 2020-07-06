@@ -125,3 +125,28 @@ body {
     border: solid #f0f0f0;
     cursor: auto;
 }
+
+/*date picker*/
+.ui-datepicker {
+    background: rgb(213, 213, 213);
+    padding: 5px;
+    border: 1px solid grey;
+    display: none;
+}
+
+.ui-timepicker-wrapper {
+    text-decoration: none;
+    background: rgb(213, 213, 213);
+    padding: 5px;
+    border: 1px solid grey;
+    display: none;
+}
+
+.ui-timepicker-list {
+    list-style: none;
+    cursor: pointer;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+    display: none;
+}
