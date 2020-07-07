@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -191,7 +192,7 @@ namespace Spice.Areas.Customer.Controllers
                 detailsCart.OrderHeader.TransactionId = charge.BalanceTransactionId;
             }
 
-            if(charge.Status.ToLower() == "succeded")
+            if(charge.Status.ToLower() == "succeeded")
             {
                 detailsCart.OrderHeader.PaymentStatus = SD.PaymentStatusApproved;
                 detailsCart.OrderHeader.Status = SD.StatusSubmitted;
@@ -202,8 +203,8 @@ namespace Spice.Areas.Customer.Controllers
 
             await _db.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home");
-            //return RedirectToAction("Confirm", "Order", new { id = detailsCart.OrderHeader.Id });
+            //return RedirectToAction("Index", "Home");
+            return RedirectToAction("Confirm", "Order", new { id = detailsCart.OrderHeader.Id });
         }
 
         public IActionResult AddCoupon()
@@ -274,5 +275,7 @@ namespace Spice.Areas.Customer.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+       
     }
 }

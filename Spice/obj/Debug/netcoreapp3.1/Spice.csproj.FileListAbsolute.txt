@@ -496,3 +496,6 @@ C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Area
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\bin\Debug\netcoreapp3.1\Stripe.net.dll
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Spice.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\Confirm.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndividualOrderDetails.cshtml.g.cs
+C:\Users\Diyar Faraj\source\repos\Spice\Spice\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Order\OrderHistory.cshtml.g.cs
