@@ -150,3 +150,10 @@ body {
 .ui-datepicker-prev, .ui-datepicker-next {
     display: none;
 }
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 70% !important;
+        margin: 1.75rem auto;
+    }
+}
