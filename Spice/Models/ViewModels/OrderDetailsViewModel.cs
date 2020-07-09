@@ -9,5 +9,6 @@ namespace Spice.Models.ViewModels
     {
         public OrderHeader OrderHeader { get; set; }
         public List<OrderDetails> OrderDetails { get; set; }
+
     }
 }
