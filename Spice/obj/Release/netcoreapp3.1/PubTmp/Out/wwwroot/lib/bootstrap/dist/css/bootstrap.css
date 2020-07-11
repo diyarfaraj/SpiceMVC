@@ -1915,8 +1915,9 @@ pre code {
 }
 
 .form-control:disabled, .form-control[readonly] {
-  background-color: #e9ecef;
+  background-color: white;
   opacity: 1;
+  border: none;
 }
 
 select.form-control:focus::-ms-value {
@@ -5908,7 +5909,7 @@ a.close.disabled {
 
 @media (min-width: 576px) {
   .modal-dialog {
-    max-width: 500px;
+    max-width: 500px !important;
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {
@@ -6647,9 +6648,7 @@ button.bg-dark:focus {
   border-color: #28a745 !important;
 }
 
-.border-info {
-  border-color: #17a2b8 !important;
-}
+
 
 .border-warning {
   border-color: #ffc107 !important;

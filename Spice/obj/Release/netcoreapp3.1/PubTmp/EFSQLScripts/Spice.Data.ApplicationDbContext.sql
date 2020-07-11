@@ -284,3 +284,218 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [Discriminator] nvarchar(max) NOT NULL DEFAULT N'';
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [City] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [Name] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [PostalCode] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [State] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    ALTER TABLE [AspNetUsers] ADD [StreetAdress] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200623202449_AddMoreFieldsToIdentityUser')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200623202449_AddMoreFieldsToIdentityUser', N'3.1.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    DECLARE @var0 sysname;
+    SELECT @var0 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[AspNetUserTokens]') AND [c].[name] = N'Name');
+    IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [AspNetUserTokens] DROP CONSTRAINT [' + @var0 + '];');
+    ALTER TABLE [AspNetUserTokens] ALTER COLUMN [Name] nvarchar(450) NOT NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    DECLARE @var1 sysname;
+    SELECT @var1 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[AspNetUserTokens]') AND [c].[name] = N'LoginProvider');
+    IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [AspNetUserTokens] DROP CONSTRAINT [' + @var1 + '];');
+    ALTER TABLE [AspNetUserTokens] ALTER COLUMN [LoginProvider] nvarchar(450) NOT NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    DECLARE @var2 sysname;
+    SELECT @var2 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[AspNetUserLogins]') AND [c].[name] = N'ProviderKey');
+    IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [AspNetUserLogins] DROP CONSTRAINT [' + @var2 + '];');
+    ALTER TABLE [AspNetUserLogins] ALTER COLUMN [ProviderKey] nvarchar(450) NOT NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    DECLARE @var3 sysname;
+    SELECT @var3 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[AspNetUserLogins]') AND [c].[name] = N'LoginProvider');
+    IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [AspNetUserLogins] DROP CONSTRAINT [' + @var3 + '];');
+    ALTER TABLE [AspNetUserLogins] ALTER COLUMN [LoginProvider] nvarchar(450) NOT NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    CREATE TABLE [ShoppingCart] (
+        [Id] int NOT NULL IDENTITY,
+        [ApplicationUserId] nvarchar(max) NULL,
+        [MenuItemId] nvarchar(max) NULL,
+        [Count] int NOT NULL,
+        CONSTRAINT [PK_ShoppingCart] PRIMARY KEY ([Id])
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200628113801_AddShppoingCart')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200628113801_AddShppoingCart', N'3.1.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200630185717_UpdateMenuItemIdToInt')
+BEGIN
+    DECLARE @var4 sysname;
+    SELECT @var4 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[ShoppingCart]') AND [c].[name] = N'MenuItemId');
+    IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [ShoppingCart] DROP CONSTRAINT [' + @var4 + '];');
+    ALTER TABLE [ShoppingCart] ALTER COLUMN [MenuItemId] int NOT NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200630185717_UpdateMenuItemIdToInt')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200630185717_UpdateMenuItemIdToInt', N'3.1.0');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    CREATE TABLE [OrderHeader] (
+        [Id] int NOT NULL IDENTITY,
+        [UserId] nvarchar(450) NOT NULL,
+        [OrderDate] datetime2 NOT NULL,
+        [OrderTotalOriginal] float NOT NULL,
+        [OrderTotal] float NOT NULL,
+        [PickupTime] datetime2 NOT NULL,
+        [CouponCode] nvarchar(max) NULL,
+        [CouponCodeDiscount] float NOT NULL,
+        [Status] nvarchar(max) NULL,
+        [PaymentStatus] nvarchar(max) NULL,
+        [Comments] nvarchar(max) NULL,
+        [PickupName] nvarchar(max) NULL,
+        [PhoneNumber] nvarchar(max) NULL,
+        [TransactionId] nvarchar(max) NULL,
+        CONSTRAINT [PK_OrderHeader] PRIMARY KEY ([Id]),
+        CONSTRAINT [FK_OrderHeader_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    CREATE TABLE [OrderDetails] (
+        [Id] int NOT NULL IDENTITY,
+        [OrderId] int NOT NULL,
+        [MenuItemId] int NOT NULL,
+        [Count] int NOT NULL,
+        [Name] nvarchar(max) NULL,
+        [Description] nvarchar(max) NULL,
+        [Price] float NOT NULL,
+        CONSTRAINT [PK_OrderDetails] PRIMARY KEY ([Id]),
+        CONSTRAINT [FK_OrderDetails_MenuItem_MenuItemId] FOREIGN KEY ([MenuItemId]) REFERENCES [MenuItem] ([Id]) ON DELETE CASCADE,
+        CONSTRAINT [FK_OrderDetails_OrderHeader_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [OrderHeader] ([Id]) ON DELETE CASCADE
+    );
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    CREATE INDEX [IX_OrderDetails_MenuItemId] ON [OrderDetails] ([MenuItemId]);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    CREATE INDEX [IX_OrderDetails_OrderId] ON [OrderDetails] ([OrderId]);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    CREATE INDEX [IX_OrderHeader_UserId] ON [OrderHeader] ([UserId]);
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200701202706_AddOrderHeadersAndDetaialsToDB')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200701202706_AddOrderHeadersAndDetaialsToDB', N'3.1.0');
+END;
+
+GO
+

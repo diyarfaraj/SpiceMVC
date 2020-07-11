@@ -13,9 +13,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Spice.Services;
+using Spice.Service;
 using Spice.Utility;
 using Stripe;
+
 
 namespace Spice
 {
@@ -41,12 +42,25 @@ namespace Spice
             })
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.AddScoped<IDbInitializer, DbInitializer>();
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
             services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration);
             services.AddControllersWithViews();
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            services.AddAuthentication().AddFacebook(opt => {
+                opt.AppId = "271686854062162";
+                opt.AppSecret = "c8543ad6db40ff3a8523206cd4d80eda";
+            });
+
+            services.AddAuthentication().AddGoogle(opt =>
+            {
+                opt.ClientId = "557412990171-3j753jb16f5dmlpqrptu479kucu8k7eg.apps.googleusercontent.com";
+                opt.ClientSecret = "ZPXTGmGlIs5CsS9CidNUaJP8";
+            });
+
             services.AddSession(options =>
             {
                 options.Cookie.IsEssential = true;
@@ -68,7 +82,7 @@ namespace Spice
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -86,6 +100,7 @@ namespace Spice
 
             app.UseRouting();
             StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+            dbInitializer.Initialize();
             app.UseAuthentication();
             app.UseSession();
             app.UseAuthorization();

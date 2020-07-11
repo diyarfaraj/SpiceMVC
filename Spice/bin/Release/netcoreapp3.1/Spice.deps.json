@@ -24,6 +24,8 @@
     ".NETCoreApp,Version=v3.1": {
       "Spice/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": "3.1.5",
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.5",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0",
           "Microsoft.AspNetCore.Identity.UI": "3.1.0",
@@ -31,6 +33,8 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.0",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.3",
+          "SendGrid": "9.18.0",
+          "Stripe.net": "37.15.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -318,6 +322,28 @@
         },
         "compile": {
           "Spice.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.5": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "3.1.5.0",
+            "fileVersion": "3.100.520.27105"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.5": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.5.0",
+            "fileVersion": "3.100.520.27105"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {},
@@ -1223,6 +1249,48 @@
           }
         }
       },
+      "SendGrid/9.18.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2",
+          "starkbank-ecdsa": "1.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.18.0.0",
+            "fileVersion": "9.18.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
+      "starkbank-ecdsa/1.2.0": {
+        "runtime": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
+        }
+      },
+      "Stripe.net/37.15.1": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
+          "Newtonsoft.Json": "12.0.2",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Stripe.net.dll": {
+            "assemblyVersion": "37.15.1.0",
+            "fileVersion": "37.15.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Stripe.net.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -1453,6 +1521,9 @@
             "assemblyVersion": "4.0.1.0",
             "fileVersion": "4.6.26515.6"
           }
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -3860,6 +3931,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y6amKeemC/14qRm8KFinQZIESAh1pzQ6c6eWix21E/uJjr9CYsWIIr6vibmNliVR3Hw8hjq3UBudVYrYVesZww==",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.5",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.3.1.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5fGJ3eKAEJRqu+cUqC2tVvITrbBx8x5JJbQbpD81Ob1q/My9pDitwaaDSBSkNeQ0J4J33Mub1D+3xS9K/9cTxg==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.5",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.5.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {
       "type": "package",
       "serviceable": true,
@@ -4419,6 +4504,27 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SendGrid/9.18.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WEZUHnHpdI/6xHvqZRZDCKhFyyyys4lnAf50qiME29QDyCVjYBjMDC/KkuLEEDnQfllBrmqkX8DNyf4XU9og9g==",
+      "path": "sendgrid/9.18.0",
+      "hashPath": "sendgrid.9.18.0.nupkg.sha512"
+    },
+    "starkbank-ecdsa/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hP53QPYOOEIR44EK9phz+DYliM6DEieDZxpb8GZzE+++qyrWqUscKcyHCC6L9yu/ehllYtqxtT4qrjWDsuQlUQ==",
+      "path": "starkbank-ecdsa/1.2.0",
+      "hashPath": "starkbank-ecdsa.1.2.0.nupkg.sha512"
+    },
+    "Stripe.net/37.15.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-49/d9Jbj3GtZ72y5pYGM5/jnAj+vJ7LIHoYFGTQeGheMznnyMrhHO1SVanqsKMM3T049fQmmi+8rrjqd1TmPHg==",
+      "path": "stripe.net/37.15.1",
+      "hashPath": "stripe.net.37.15.1.nupkg.sha512"
     },
     "System.AppContext/4.3.0": {
       "type": "package",
