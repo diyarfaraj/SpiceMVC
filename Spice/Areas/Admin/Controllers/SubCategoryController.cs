@@ -221,8 +221,18 @@ namespace Spice.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            _db.SubCategory.Remove(subCategory);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.SubCategory.Remove(subCategory);
+                await _db.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+
 
            
 

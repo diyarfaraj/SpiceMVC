@@ -16,6 +16,7 @@ namespace Spice.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _db;
+        public Exception eMessage = new Exception("hejhej");
         public CategoryController(ApplicationDbContext db)
         {
             _db = db; 
@@ -110,7 +111,6 @@ namespace Spice.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             
-           
             var category = await _db.Category.FindAsync(id);
 
             if(category == null)
@@ -118,8 +118,16 @@ namespace Spice.Areas.Admin.Controllers
                return NotFound();
             }
 
-            _db.Category.Remove(category);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Category.Remove(category);
+                await _db.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
 
 
             return RedirectToAction(nameof(Index));
