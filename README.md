@@ -1,5 +1,5 @@
 # SpiceMVC
 Food delivary web app, built on MVC .Net Core 3. 
 
-Visit link below for live demo:
+Visit link for live demo:
 https://spiceislaand.azurewebsites.net/
